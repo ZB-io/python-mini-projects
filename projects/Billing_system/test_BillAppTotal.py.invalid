@@ -1,0 +1,41 @@
+import pytest
+from projects.Billing_system.billing_system import Bill_App
+from unittest.mock import patch
+from tkinter import Tk
+
+@pytest.fixture
+def bill_app():
+    root = Tk()
+    obj = Bill_App(root)
+    yield obj
+    root.destroy()
+
+@patch('projects.Billing_system.billing_system.Tk')
+def test_medical_products_pricing(mock_Tk, bill_app):
+    # TODO: Set hand gloves, sanitizer, mask, dettol, newsprin, thermal_gun quantities
+    bill_app.hand_gloves.set(10)
+    bill_app.sanitizer.set(5)
+    bill_app.mask.set(20)
+    bill_app.dettol.set(3)
+    bill_app.newsprin.set(4)
+    bill_app.thermal_gun.set(1)
+
+    bill_app.total()
+
+    assert float(bill_app.medical_price.get()[2:]) == 137.0
+
+@patch('projects.Billing_system.billing_system.Tk')
+def test_medical_tax_calculation(mock_Tk, bill_app):
+    # TODO: Set hand gloves, sanitizer, mask, dettol, newsprin, thermal_gun quantities
+    bill_app.hand_gloves.set(10)
+    bill_app.sanitizer.set(5)
+    bill_app.mask.set(20)
+    bill_app.dettol.set(3)
+    bill_app.newsprin.set(4)
+    bill_app.thermal_gun.set(1)
+
+    bill_app.total()
+
+    assert float(bill_app.medical_tax.get()[2:]) == 6.85
+
+# ... continue with the rest of the test functions

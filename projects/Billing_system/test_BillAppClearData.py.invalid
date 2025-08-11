@@ -1,0 +1,55 @@
+import pytest
+import random
+from tkinter import *
+from tkinter import messagebox
+from billing_system import Bill_App
+
+@pytest.mark.unit
+@pytest.mark.clear_data
+def test_clear_data_resets_quantity_variables():
+    obj = Bill_App(root)
+    initial_quantities = {
+        "sanitizer": obj.sanitizer.get(),
+        "mask": obj.mask.get(),
+        "hand_gloves": obj.hand_gloves.get(),
+        "dettol": obj.dettol.get(),
+        "newsprin": obj.newsprin.get(),
+        "thermal_gun": obj.thermal_gun.get(),
+        # Add other quantity variables here
+    }
+    obj.clear_data()
+    final_quantities = {
+        "sanitizer": obj.sanitizer.get(),
+        "mask": obj.mask.get(),
+        "hand_gloves": obj.hand_gloves.get(),
+        "dettol": obj.dettol.get(),
+        "newsprin": obj.newsprin.get(),
+        "thermal_gun": obj.thermal_gun.get(),
+        # Add other quantity variables here
+    }
+    assert initial_quantities == final_quantities, "Some quantity variables were not reset to zero."
+
+# ... (other test functions)
+
+class Bill_App:
+    def __init__(self, root):
+        self.root = root
+
+    # ... (other methods)
+
+    def clear_data(self):
+        op = messagebox.askyesno("Clear", "Do you really want to Clear?")
+        if op > 0:
+            self.sanitizer.set(0)
+            self.mask.set(0)
+            self.hand_gloves.set(0)
+            self.dettol.set(0)
+            self.newsprin.set(0)
+            self.thermal_gun.set(0)
+
+            # ... (other variables being reset)
+
+            x = random.randint(1000, 9999)
+            self.bill_no.set(str(x))
+            self.search_bill.set("")
+            self.welcome_bill()
