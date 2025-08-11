@@ -1,0 +1,21 @@
+import pytest
+import tkinter as tk
+from projects.billing_system.billing_system import Bill_App
+from tkinter import messagebox
+
+@pytest.fixture
+def setup_bill_app():
+    root = tk.Tk()
+    obj = Bill_App(root)
+    yield obj
+    root.destroy()
+
+def test_display_correct_confirmation_dialog(setup_bill_app):
+    # Arrange
+    expected_message = "Do you really want to exit?"
+
+    # Act
+    result = setup_bill_app.exit_app()
+
+    # Assert
+    messagebox.showinfo.assert_called_once_with("Exit", expected_message)

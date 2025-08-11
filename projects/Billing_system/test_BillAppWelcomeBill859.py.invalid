@@ -1,0 +1,19 @@
+import pytest
+from projects.Billing_system.billing_system import Bill_App
+
+@pytest.fixture
+def bill_app():
+    app = Bill_App("root")
+    yield app
+    app.root.destroy()
+
+def test_welcome_bill(bill_app):
+    bill_app.welcome_bill()
+    assert bill_app.txtarea.get("1.0", "end-1c") == """\
+    Welcome Webcode Retail
+     Bill Number:{}
+    Customer Name:{}
+    Phone Number{}
+    ================================
+    Products                QTY        Price
+    """.format(bill_app.bill_no.get(), bill_app.c_name.get(), bill_app.c_phone.get())

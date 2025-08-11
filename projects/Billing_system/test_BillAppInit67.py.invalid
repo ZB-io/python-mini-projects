@@ -1,0 +1,116 @@
+import pytest
+import tkinter as tk
+from projects.Billing_system.billing_system import Bill_App
+
+@pytest.fixture
+def setup():
+    root = tk.Tk()
+    obj = Bill_App(root)
+    yield obj
+    root.destroy()
+
+def test_initialize_bill_app(setup):
+    obj = setup
+    assert obj.root.geometry() == "1350x700+0+0"
+    assert obj.root.title() == "Billing Software"
+    assert not obj.root.attributes('-fullscreen')
+
+def test_create_customer_details_frame(setup):
+    obj = setup
+    assert obj.customer_details_frame.winfo_exists()
+    assert obj.customer_details_frame.winfo_width() == 1345
+    assert obj.customer_details_frame.winfo_height() == 80
+
+def test_create_customer_details_form_elements(setup):
+    obj = setup
+    assert obj.c_name_lbl.winfo_exists()
+    assert obj.c_name_txt.winfo_exists()
+    assert obj.c_phone_lbl.winfo_exists()
+    assert obj.c_phone_txt.winfo_exists()
+    assert obj.search_bill_lbl.winfo_exists()
+    assert obj.search_bill_txt.winfo_exists()
+    assert obj.bill_btn.winfo_exists()
+
+def test_create_medical_purpose_frame(setup):
+    obj = setup
+    assert obj.medical_purpose_frame.winfo_exists()
+    assert obj.medical_purpose_frame.winfo_width() == 315
+    assert obj.medical_purpose_frame.winfo_height() == 370
+
+def test_create_medical_purpose_form_elements(setup):
+    obj = setup
+    assert obj.sanitizer_lbl.winfo_exists()
+    assert obj.sanitizer_txt.winfo_exists()
+    assert obj.mask_lbl.winfo_exists()
+    assert obj.mask_txt.winfo_exists()
+    assert obj.hand_gloves_lbl.winfo_exists()
+    assert obj.hand_gloves_txt.winfo_exists()
+    assert obj.dettol_lbl.winfo_exists()
+    assert obj.dettol_txt.winfo_exists()
+    assert obj.newsprin_lbl.winfo_exists()
+    assert obj.newsprin_txt.winfo_exists()
+    assert obj.thermal_gun_lbl.winfo_exists()
+    assert obj.thermal_gun_txt.winfo_exists()
+
+def test_create_grocery_items_frame(setup):
+    obj = setup
+    assert obj.grocery_items_frame.winfo_exists()
+    assert obj.grocery_items_frame.winfo_width() == 315
+    assert obj.grocery_items_frame.winfo_height() == 370
+
+def test_create_grocery_items_form_elements(setup):
+    obj = setup
+    assert obj.rice_lbl.winfo_exists()
+    assert obj.rice_txt.winfo_exists()
+    assert obj.food_oil_lbl.winfo_exists()
+    assert obj.food_oil_txt.winfo_exists()
+    assert obj.wheat_lbl.winfo_exists()
+    assert obj.wheat_txt.winfo_exists()
+    assert obj.daal_lbl.winfo_exists()
+    assert obj.daal_txt.winfo_exists()
+    assert obj.flour_lbl.winfo_exists()
+    assert obj.flour_txt.winfo_exists()
+    assert obj.maggi_lbl.winfo_exists()
+    assert obj.maggi_txt.winfo_exists()
+
+def test_create_cold_drinks_frame(setup):
+    obj = setup
+    assert obj.cold_drinks_frame.winfo_exists()
+    assert obj.cold_drinks_frame.winfo_width() == 315
+    assert obj.cold_drinks_frame.winfo_height() == 370
+
+def test_create_cold_drinks_form_elements(setup):
+    obj = setup
+    assert obj.sprite_lbl.winfo_exists()
+    assert obj.sprite_txt.winfo_exists()
+    assert obj.limka_lbl.winfo_exists()
+    assert obj.limka_txt.winfo_exists()
+    assert obj.mazza_lbl.winfo_exists()
+    assert obj.mazza_txt.winfo_exists()
+    assert obj.coke_lbl.winfo_exists()
+    assert obj.coke_txt.winfo_exists()
+    assert obj.fanta_lbl.winfo_exists()
+    assert obj.fanta_txt.winfo_exists()
+    assert obj.mountain_duo_lbl.winfo_exists()
+    assert obj.mountain_duo_txt.winfo_exists()
+
+def test_create_bill_area_frame(setup):
+    obj = setup
+    assert obj.bill_area_frame.winfo_exists()
+    assert obj.bill_area_frame.winfo_width() == 345
+    assert obj.bill_area_frame.winfo_height() == 370
+
+def test_create_bill_area_form_elements(setup):
+    obj = setup
+    assert obj.bill_title.winfo_exists()
+    assert obj.txtarea.winfo_exists()
+
+def test_create_button_frame_and_buttons(setup):
+    obj = setup
+    assert obj.button_frame.winfo_exists()
+    assert obj.button_frame.winfo_width() == 1345
+    assert obj.button_frame.winfo_height() == 135
+    assert obj.total_btn.winfo_exists()
+    assert obj.generateBill_btn.winfo_exists()
+    assert obj.clear_btn.winfo_exists()
+    assert obj.exit_btn.winfo_exists()
