@@ -1,0 +1,95 @@
+import os
+import pytest
+import unittest.mock as mock
+from tkinter import *
+from tkinter import messagebox
+from projects.Billing_system.billing_system import Bill_App
+
+@pytest.fixture
+def bill_app():
+    root = Tk()
+    obj = Bill_App(root)
+    yield obj
+    root.destroy()
+
+@pytest.mark.smoke
+@pytest.mark.valid
+def test_save_bill_display_confirmation_dialog(bill_app):
+    # Arrange
+    with patch('tkinter.messagebox.askyesno') as mock_askyesno:
+        mock_askyesno.return_value = True
+
+        # Act
+        bill_app.save_bill()
+
+        # Assert
+        mock_askyesno.assert_called_once_with("Save Bill", "Do you want to save the bill?")
+
+@pytest.mark.regression
+@pytest.mark.valid
+def test_save_bill_save_bill_data(bill_app):
+    # Arrange
+    bill_no = 123
+    bill_data = "Test Bill Data"
+    bill_app.bill_no = IntVar()
+    bill_app.bill_no.set(bill_no)
+    bill_app.txtarea = Text()
+    bill_app.txtarea.insert('1.0', bill_data)
+
+    with patch('tkinter.messagebox.askyesno') as mock_askyesno, \
+         patch('tkinter.messagebox.showinfo') as mock_showinfo, \
+         patch('builtins.open', mock.mock_open()) as mock_file:
+
+        mock_askyesno.return_value = True
+
+        # Act
+        bill_app.save_bill()
+
+        # Assert
+        mock_file.assert_called_once_with("bills/" + str(bill_no) + ".txt", "w")
+        handle = mock_file().return_value
+        handle.write.assert_called_once_with(bill_data)
+        mock_showinfo.assert_called_once_with("Saved", f"Bill no:{bill_no} Saved Successfully")
+
+@pytest.mark.regression
+@pytest.mark.valid
+def test_save_bill_do_not_save_bill_data_on_cancel(bill_app):
+    # Arrange
+    bill_no = 123
+    bill_data = "Test Bill Data"
+    bill_app.bill_no = IntVar()
+    bill_app.bill_no.set(bill_no)
+    bill_app.txtarea = Text()
+    bill_app.txtarea.insert('1.0', bill_data)
+
+    with patch('tkinter.messagebox.askyesno') as mock_askyesno:
+        mock_askyesno.return_value = False
+
+        # Act
+        bill_app.save_bill()
+
+        # Assert
+        assert not os.path.exists(f"bills/{bill_no}.txt")
+
+@pytest.mark.regression
+@pytest.mark.valid
+def test_save_bill_display_success_message(bill_app):
+    # Arrange
+    bill_no = 123
+    bill_data = "Test Bill Data"
+    bill_app.bill_no = IntVar()
+    bill_app.bill_no.set(bill_no)
+    bill_app.txtarea = Text()
+    bill_app.txtarea.insert('1.0', bill_data)
+
+    with patch('tkinter.messagebox.askyesno') as mock_askyesno, \
+         patch('tkinter.messagebox.showinfo') as mock_showinfo, \
+         patch('builtins.open', mock.mock_open()) as mock_file:
+
+        mock_askyesno.return_value = True
+
+        # Act
+        bill_app.save_bill()
+
+        # Assert
+        mock_showinfo.assert_called_once_with("Saved", f"Bill no:{bill_no} Saved Successfully")

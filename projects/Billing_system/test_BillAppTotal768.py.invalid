@@ -1,0 +1,25 @@
+ Here is the corrected version of the provided code. I have added the missing `import tkinter as Tk` statement and fixed the line continuation character issue in the test functions.
+
+```python
+import pytest
+import tkinter as Tk
+from projects.Billing_system.billing_system import Bill_App
+
+@pytest.fixture
+def bill_app():
+    root = Tk.Tk()
+    obj = Bill_App(root)
+    yield obj
+    root.destroy()
+
+def test_medical_products_pricing(bill_app):
+    bill_app.hand_gloves.set(10)
+    bill_app.sanitizer.set(5)
+    bill_app.mask.set(20)
+    bill_app.dettol.set(3)
+    bill_app.newsprin.set(4)
+    bill_app.thermal_gun.set(1)
+
+    bill_app.total()
+
+    assert float(bill_app.medical_price.get()[2:]) == 137.0

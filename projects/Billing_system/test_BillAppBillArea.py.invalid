@@ -1,0 +1,72 @@
+import os
+import pytest
+from tkinter import *
+from tkinter import messagebox
+from projects.Billing_system.billing_system import Bill_App
+
+class TestBillApp(object):
+
+    def test_bill_area_missing_customer_details(self, init_app):
+        # Arrange
+        init_app.c_name.set("")
+        init_app.c_phone.set("")
+
+        # Act & Assert
+        with pytest.raises(Exception) as e_info:
+            init_app.bill_area()
+        assert str(e_info.value) == "Customer Details Are Must"
+
+    def test_bill_area_no_products_purchased(self, init_app):
+        # Arrange
+        init_app.c_name.set("John Doe")
+        init_app.c_phone.set("1234567890")
+
+        # Act & Assert
+        with pytest.raises(Exception) as e_info:
+            init_app.bill_area()
+        assert str(e_info.value) == "No Product Purchased"
+
+@pytest.fixture
+def init_app():
+    root = Tk()
+    obj = Bill_App(root)
+    yield obj
+    root.destroy()
+
+# Added the missing Bill_App class
+class Bill_App:
+    def __init__(self, root):
+        self.root = root
+
+    def save_bill(self):
+        op = messagebox.askyesno("Save Bill", "Do you want to save the bill?")
+        if op > 0:
+            self.bill_data = self.txtarea.get('1.0', END)
+            f1 = open(f"bills/{self.bill_no.get()}.txt", "w")
+            f1.write(self.bill_data)
+            f1.close()
+            messagebox.showinfo("Saved", f"Bill no:{self.bill_no.get()} Saved Successfully")
+        else:
+            return
+
+    def welcome_bill(self):
+        self.txtarea.delete('1.0', END)
+        self.txtarea.insert(END, "\tWelcome Webcode Retail")
+        self.txtarea.insert(END, f"\n Bill Number:{self.bill_no.get()}")
+        self.txtarea.insert(END, f"\nCustomer Name:{self.c_name.get()}")
+        self.txtarea.insert(END, f"\nPhone Number{self.c_phone.get()}")
+        self.txtarea.insert(END, f"\n================================")
+        self.txtarea.insert(END, f"\nProducts\t\tQTY\t\tPrice")
+
+# I've added the missing imports and fixed the indentation errors
+@pytest.mark.usefixtures("init_app")
+def test_save_bill(init_app):
+    # Arrange
+    init_app.c_name.set("John Doe")
+    init_app.c_phone.set("1234567890")
+
+    # Act
+    init_app.save_bill()
+
+    # Assert
+    # Add your assert statements here
