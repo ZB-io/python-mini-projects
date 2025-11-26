@@ -1,0 +1,74 @@
+[
+  {
+    "username": "jdoe",
+    "email": "jdoe@example.com",
+    "statusCode": 201,
+    "scenario": "Successful responses: Created"
+  },
+  {
+    "username": "msmith",
+    "email": "msmith@company.org",
+    "firstName": "Michael",
+    "lastName": "Smith",
+    "statusCode": 201,
+    "scenario": "Successful responses: Created"
+  },
+  {
+    "username": "agarcia",
+    "email": "agarcia@domain.net",
+    "firstName": "Ana",
+    "lastName": "Garcia",
+    "statusCode": 201,
+    "scenario": "Successful responses: Created"
+  },
+  {
+    "email": "missing_username@test.com",
+    "firstName": "Test",
+    "lastName": "User",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "username": "noEmailUser",
+    "firstName": "John",
+    "lastName": "Doe",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "username": "invalidEmail",
+    "email": "not-a-valid-email",
+    "firstName": "Invalid",
+    "lastName": "Email",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "username": "",
+    "email": "empty_username@test.com",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "username": "specialChars!@#",
+    "email": "special@test.com",
+    "firstName": "Special",
+    "lastName": "Characters",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "username": "validuser123",
+    "email": "validuser123@email.com",
+    "statusCode": 201,
+    "scenario": "Successful responses: Created"
+  },
+  {
+    "username": "fullprofile",
+    "email": "fullprofile@example.com",
+    "firstName": "Full",
+    "lastName": "Profile",
+    "statusCode": 201,
+    "scenario": "Successful responses: Created"
+  }
+]
