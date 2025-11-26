@@ -1,0 +1,101 @@
+[
+  {
+    "q": "London",
+    "days": "3",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "New York",
+    "days": "7",
+    "dt": "2024-01-15",
+    "lang": "en",
+    "alerts": "yes",
+    "aqi": "yes",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "Paris",
+    "days": "5",
+    "hour": "12",
+    "lang": "fr",
+    "alerts": "no",
+    "aqi": "no",
+    "tp": "15",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "Tokyo",
+    "unixdt": "1705315200",
+    "lang": "ja",
+    "aqi": "yes",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "days": "5",
+    "dt": "2024-01-20",
+    "lang": "en",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "",
+    "days": "3",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "xyznonexistentlocation12345",
+    "days": "3",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "Berlin",
+    "days": "invalid_number",
+    "dt": "not-a-date",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "Sydney",
+    "days": "3",
+    "alerts": "invalid_value",
+    "aqi": "maybe",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "Madrid",
+    "days": "5",
+    "statusCode": 401,
+    "scenario": "Client error responses: Unauthorized"
+  },
+  {
+    "q": "Rome",
+    "days": "7",
+    "lang": "it",
+    "aqi": "yes",
+    "statusCode": 401,
+    "scenario": "Client error responses: Unauthorized"
+  },
+  {
+    "q": "Dubai",
+    "days": "10",
+    "alerts": "yes",
+    "statusCode": 403,
+    "scenario": "Client error responses: Forbidden"
+  },
+  {
+    "q": "Singapore",
+    "days": "14",
+    "tp": "15",
+    "aqi": "yes",
+    "alerts": "yes",
+    "statusCode": 403,
+    "scenario": "Client error responses: Forbidden"
+  }
+]

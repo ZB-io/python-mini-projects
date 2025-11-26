@@ -1,0 +1,98 @@
+[
+  {
+    "q": "London",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "New York",
+    "days": "3",
+    "dt": "2024-01-15",
+    "hour": "12",
+    "lang": "en",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "Paris",
+    "days": "7",
+    "unixdt": "1705315200",
+    "lang": "fr",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "Tokyo",
+    "days": "5",
+    "dt": "2024-02-20",
+    "hour": "18",
+    "lang": "ja",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "days": "3",
+    "dt": "2024-01-15",
+    "hour": "10",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "",
+    "days": "5",
+    "lang": "en",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "xyznonexistentlocation12345",
+    "days": "3",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "Berlin",
+    "days": "abc",
+    "dt": "invalid-date",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "Sydney",
+    "days": "3",
+    "hour": "99",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "Madrid",
+    "days": "5",
+    "lang": "en",
+    "statusCode": 401,
+    "scenario": "Client error responses: Unauthorized"
+  },
+  {
+    "q": "Rome",
+    "dt": "2024-03-10",
+    "statusCode": 401,
+    "scenario": "Client error responses: Unauthorized"
+  },
+  {
+    "q": "Dubai",
+    "days": "7",
+    "hour": "6",
+    "lang": "ar",
+    "statusCode": 403,
+    "scenario": "Client error responses: Forbidden"
+  },
+  {
+    "q": "Singapore",
+    "days": "14",
+    "dt": "2024-04-01",
+    "unixdt": "1711929600",
+    "hour": "15",
+    "lang": "zh",
+    "statusCode": 403,
+    "scenario": "Client error responses: Forbidden"
+  }
+]

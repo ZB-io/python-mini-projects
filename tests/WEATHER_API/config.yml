@@ -1,0 +1,19 @@
+
+# This config.yml contains user provided data for api testing. Allows to define values here or use ENV to load values. e.g. ENV[API_HOST] = "https://exampl2.com"
+# api:
+#   host: "${API_HOST:-https://example.com/api/v2}" # includes base path
+# auth:
+#   api_key: "${API_KEY:-}"
+#   api_key_header: "${KEYNAME:-DefaultValue}"     # openapi.spec.security.KEY_NAME
+#   basic_auth: "${username:-}:${password:-}"
+# test_data:
+#   id: "${TEST_ID:-282739-1238371-219393-2833}"    # Any test data key value pair e.g. GET /api/v1/cart/:id
+#   context-id: "${TEST_context-id:-}"              #                                   GET /api/v1/{context-id}/summary
+
+
+
+api:
+  host: "${API_HOST:-https://api.weatherapi.com}"
+auth:
+  ApiKeyAuth: "${key:-}"
+test_data: {}

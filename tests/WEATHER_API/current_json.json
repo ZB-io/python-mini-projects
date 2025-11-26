@@ -1,0 +1,71 @@
+[
+  {
+    "q": "London",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "New York",
+    "lang": "en",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "Paris",
+    "lang": "fr",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "48.8566,2.3522",
+    "lang": "de",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "lang": "en",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "",
+    "lang": "en",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "xyznonexistentlocation12345",
+    "lang": "en",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "!!!@@@###",
+    "lang": "en",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "Tokyo",
+    "lang": "ja",
+    "statusCode": 401,
+    "scenario": "Client error responses: Unauthorized"
+  },
+  {
+    "q": "Berlin",
+    "statusCode": 401,
+    "scenario": "Client error responses: Unauthorized"
+  },
+  {
+    "q": "Sydney",
+    "lang": "en",
+    "statusCode": 403,
+    "scenario": "Client error responses: Forbidden"
+  },
+  {
+    "q": "Mumbai",
+    "lang": "hi",
+    "statusCode": 403,
+    "scenario": "Client error responses: Forbidden"
+  }
+]
