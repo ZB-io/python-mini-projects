@@ -1,0 +1,72 @@
+[
+  {
+    "q": "London",
+    "dt": "2024-01-15",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "New York",
+    "dt": "2024-02-20",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "Paris",
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "q": "",
+    "dt": "2024-03-10",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "dt": "2024-04-05",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "InvalidLocationXYZ123456",
+    "dt": "2024-05-15",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "Tokyo",
+    "dt": "invalid-date-format",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  },
+  {
+    "q": "Berlin",
+    "dt": "2024-06-25",
+    "statusCode": 401,
+    "scenario": "Client error responses: Unauthorized"
+  },
+  {
+    "q": "Sydney",
+    "dt": "2024-07-30",
+    "statusCode": 401,
+    "scenario": "Client error responses: Unauthorized"
+  },
+  {
+    "q": "Mumbai",
+    "dt": "2024-08-12",
+    "statusCode": 403,
+    "scenario": "Client error responses: Forbidden"
+  },
+  {
+    "q": "Dubai",
+    "dt": "2024-09-18",
+    "statusCode": 403,
+    "scenario": "Client error responses: Forbidden"
+  },
+  {
+    "q": "   ",
+    "dt": "2024-10-22",
+    "statusCode": 400,
+    "scenario": "Client error responses: Bad Request"
+  }
+]
