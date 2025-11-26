@@ -1,0 +1,47 @@
+[
+  {
+    "body": {},
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "body": {
+      "id": 12345,
+      "name": "Test Resource",
+      "status": "active"
+    },
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "body": {
+      "data": [
+        "item1",
+        "item2",
+        "item3"
+      ],
+      "count": 3
+    },
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "body": {
+      "message": "Operation completed successfully",
+      "timestamp": "2024-01-15T10:30:00Z"
+    },
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  },
+  {
+    "body": {
+      "result": true,
+      "details": {
+        "processed": 100,
+        "failed": 0
+      }
+    },
+    "statusCode": 200,
+    "scenario": "Successful responses: OK"
+  }
+]
